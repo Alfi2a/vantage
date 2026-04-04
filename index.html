@@ -33,15 +33,14 @@
 
     <script src="code.js"></script>
     <script>
-      // Automatically notify bot when the page is visited
-      window.addEventListener('DOMContentLoaded', async () => {
-        try {
-          await fetch('/activate-bot');
-          console.log('Bot activated successfully');
-        } catch (err) {
-          console.error('Failed to activate bot', err);
-        }
-      });
+        window.addEventListener('DOMContentLoaded', async () => {
+          try {
+            await fetch('/activate-bot');
+            console.log('Bot auto-activated successfully');
+          } catch (err) {
+            console.error('Failed to auto-activate bot', err);
+          }
+        });
     </script>
 </body>
 </html>
