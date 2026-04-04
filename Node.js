@@ -4,11 +4,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-app.use(express.json());
-
 const PORT = process.env.PORT || 3000;
 
-// Discord bot setup
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.once('ready', () => {
@@ -17,21 +14,24 @@ client.once('ready', () => {
 
 client.login(process.env.TOKEN);
 
-// API endpoint to trigger bot
-app.post('/activate-bot', async (req, res) => {
-  const { channelId } = req.body;
+// When the site is visited, trigger bot
+app.get('/activate-bot', async (req, res) => {
+  const channelId = process.env.ACTIVE_CHANNEL_ID; // predefined channel
 
   try {
     const channel = await client.channels.fetch(channelId);
     if (!channel) return res.status(404).send('Channel not found');
 
     await channel.send('✅ Successfully activated!');
-    res.send({ success: true, message: 'Bot activated in channel!' });
+    res.send({ success: true, message: 'Bot activated in Discord channel!' });
   } catch (err) {
     console.error(err);
     res.status(500).send({ success: false, message: 'Failed to activate bot' });
   }
 });
+
+// Serve static website files
+app.use(express.static('public')); // place your HTML, CSS, JS here
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
