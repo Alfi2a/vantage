@@ -1,10 +1,8 @@
-/* Minecraft Font */
 @font-face {
     font-family: 'Minecraft';
     src: url('minecraft.ttf');
 }
 
-/* Page */
 body {
     margin: 0;
     height: 100vh;
@@ -14,109 +12,68 @@ body {
     justify-content: center;
     align-items: center;
 
-    color: white;
     font-family: 'Minecraft', sans-serif;
+    color: white;
 }
 
-/* Panorama Container */
+/* ===== PANORAMA (Minecraft style) ===== */
 .panorama {
     position: fixed;
     inset: 0;
-    perspective: 1000px;
-    overflow: hidden;
     z-index: -2;
 }
 
-/* Cube */
-.cube {
+/* each layer = same image stack like Minecraft menu */
+.panorama-layer {
     position: absolute;
-
-    width: 2000px;
-    height: 2000px;
-
-    top: 50%;
-    left: 50%;
-
-    transform-style: preserve-3d;
-
-    animation: rotatePanorama 120s linear infinite;
-}
-
-/* Cube Faces */
-.face {
-    position: absolute;
-
-    width: 2000px;
-    height: 2000px;
+    inset: -20%;
 
     background-size: cover;
     background-position: center;
+
+    filter: blur(1px);
+    transform: scale(1.1);
 }
 
-/* Top */
-.top {
-    background-image: url("Panorama/Panorama0.png");
-    transform: rotateX(90deg) translateZ(1000px);
+/* Assign same images like Minecraft does */
+.p0 { background-image: url("Panorama/Panorama0.png"); }
+.p1 { background-image: url("Panorama/Panorama1.png"); }
+.p2 { background-image: url("Panorama/Panorama2.png"); }
+.p3 { background-image: url("Panorama/Panorama3.png"); }
+.p4 { background-image: url("Panorama/Panorama4.png"); }
+.p5 { background-image: url("Panorama/Panorama5.png"); }
+
+/* slow cinematic drift */
+.panorama-layer {
+    animation: drift 60s ease-in-out infinite alternate;
 }
 
-/* Bottom */
-.bottom {
-    background-image: url("Panorama/Panorama1.png");
-    transform: rotateX(-90deg) translateZ(1000px);
-}
+/* slight offset between layers = parallax feel */
+.p0 { animation-delay: 0s; }
+.p1 { animation-delay: -10s; }
+.p2 { animation-delay: -20s; }
+.p3 { animation-delay: -30s; }
+.p4 { animation-delay: -40s; }
+.p5 { animation-delay: -50s; }
 
-/* Front */
-.front {
-    background-image: url("Panorama/Panorama2.png");
-    transform: translateZ(1000px);
-}
-
-/* Right */
-.right {
-    background-image: url("Panorama/Panorama3.png");
-    transform: rotateY(90deg) translateZ(1000px);
-}
-
-/* Back */
-.back {
-    background-image: url("Panorama/Panorama4.png");
-    transform: rotateY(180deg) translateZ(1000px);
-}
-
-/* Left */
-.left {
-    background-image: url("Panorama/Panorama5.png");
-    transform: rotateY(-90deg) translateZ(1000px);
-}
-
-/* Minecraft-like rotation */
-@keyframes rotatePanorama {
+@keyframes drift {
     from {
-        transform:
-            translate(-50%, -50%)
-            rotateX(-12deg)
-            rotateY(0deg);
+        transform: scale(1.15) translateX(-2%) translateY(-1%);
     }
-
     to {
-        transform:
-            translate(-50%, -50%)
-            rotateX(-12deg)
-            rotateY(360deg);
+        transform: scale(1.15) translateX(2%) translateY(1%);
     }
 }
 
-/* Dark Overlay */
+/* dark overlay like Minecraft menu */
 .overlay {
     position: fixed;
     inset: 0;
-
-    background: rgba(0, 0, 0, 0.35);
-
+    background: rgba(0,0,0,0.35);
     z-index: -1;
 }
 
-/* Main Minecraft Panel */
+/* ===== UI BOX ===== */
 .container {
     position: relative;
     z-index: 10;
@@ -124,7 +81,7 @@ body {
     width: 400px;
     height: 400px;
 
-    background: url('TextBoxbackground.png') no-repeat center;
+    background: url("TextBoxbackground.png") no-repeat center;
     background-size: 100% 100%;
 
     display: flex;
@@ -135,7 +92,7 @@ body {
 
     padding: 20px;
 
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0,0,0,0.6);
     background-blend-mode: darken;
 
     border: 4px solid #000;
@@ -144,34 +101,19 @@ body {
     text-align: center;
 }
 
-h1 {
-    margin: 0;
-}
-
-.hint {
-    margin: 0;
-}
-
-/* Input */
+/* input */
 input {
     width: 70%;
     padding: 8px;
 
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0,0,0,0.7);
     border: 2px solid #888;
 
     color: white;
     font-family: 'Minecraft', sans-serif;
-    font-size: 16px;
-
-    outline: none;
 }
 
-input:focus {
-    border-color: white;
-}
-
-/* Button */
+/* button */
 button {
     padding: 10px 20px;
     cursor: pointer;
@@ -183,18 +125,12 @@ button {
     font-family: 'Minecraft', sans-serif;
 }
 
-button:hover {
-    filter: brightness(1.1);
-}
-
-/* Work in Progress Text */
+/* WIP */
 .wip {
     position: absolute;
     bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
-
-    margin: 0;
 
     font-size: 12px;
     color: #aaa;
