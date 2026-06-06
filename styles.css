@@ -1,105 +1,54 @@
-/* Minecraft Font */
 @font-face {
-  font-family: 'Minecraft';
-  src: url('minecraft.ttf');
+    font-family: 'Minecraft';
+    src: url('minecraft.ttf');
 }
 
-/* Body and Background */
 body {
-  background: url('background.png') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-  font-family: 'Minecraft', sans-serif;
-  text-align: center;
-  line-height: 1.8;
-  padding: 40px;
+    margin: 0;
+    height: 100vh;
+
+    background: url('background.png') no-repeat center center fixed;
+    background-size: cover;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Minecraft', sans-serif;
 }
 
-/* Story Text */
-.story p {
-  margin-bottom: 15px;
-  font-family: 'Minecraft', sans-serif;
-  text-align: center;
-}
-
-.emphasis {
-  color: #ff4444;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.hint-text {
-  font-style: italic;
-  color: #a0a0a0;
-}
-
-/* Minecraft Riddle Panel */
 .container {
-  width: 400px;
-  height: 400px;
+    width: 400px;
+    height: 400px;
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    background: url('TextBoxbackground.png') no-repeat center;
+    background-size: 100% 100%;
 
-  background: url('TextBoxbackground.png') no-repeat center;
-  background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    background-blend-mode: darken;
 
-  padding: 20px;
-
-  /* darker overlay */
-  background-color: rgba(0, 0, 0, 0.6);
-  background-blend-mode: darken;
-
-  /* outline */
-  border: 4px solid #000;
-  box-shadow: 0 0 0 4px #555;
-
-  font-family: 'Minecraft', sans-serif;
+    border: 4px solid #000;
+    box-shadow: 0 0 0 4px #555;
 }
 
-/* Input Box */
 input {
-  background: rgba(0, 0, 0, 0.7);
-  border: 2px solid #888;
+    width: 70%;
+    padding: 8px;
 
-  color: white;
-  font-family: 'Minecraft', sans-serif;
-  font-size: 16px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #888;
 
-  padding: 8px;
-  width: 70%;
+    color: white;
+    font-family: 'Minecraft', sans-serif;
+    font-size: 16px;
 
-  outline: none;
+    outline: none;
 }
 
 input:focus {
-  border: 2px solid #fff;
-}
-
-/* Button */
-button {
-  padding: 10px 20px;
-  margin-top: 10px;
-  cursor: pointer;
-  background: #4CAF50;
-  border: none;
-  color: white;
-  font-family: 'Minecraft', sans-serif;
-}
-
-/* Eye Animation */
-.eye {
-  position: fixed;
-  width: 80px;
-  pointer-events: none;
-  z-index: 999;
-  image-rendering: pixelated;
+    border-color: white;
 }
