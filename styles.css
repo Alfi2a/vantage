@@ -19,6 +19,8 @@ body {
 }
 
 .container {
+    position: relative;
+
     width: 400px;
     height: 400px;
 
@@ -77,4 +79,22 @@ button {
 
     color: white;
     font-family: 'Minecraft', sans-serif;
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+#wip,
+.wip {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin: 0;
+
+    font-size: 12px;
+    color: #aaa;
+    opacity: 0.8;
 }
