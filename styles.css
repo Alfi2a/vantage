@@ -1,14 +1,14 @@
+/* Minecraft Font */
 @font-face {
     font-family: 'Minecraft';
     src: url('minecraft.ttf');
 }
 
+/* Page */
 body {
     margin: 0;
     height: 100vh;
-
-    background: url('background.png') no-repeat center center fixed;
-    background-size: cover;
+    overflow: hidden;
 
     display: flex;
     justify-content: center;
@@ -18,8 +18,108 @@ body {
     font-family: 'Minecraft', sans-serif;
 }
 
+/* Panorama Container */
+.panorama {
+    position: fixed;
+    inset: 0;
+    perspective: 1000px;
+    overflow: hidden;
+    z-index: -2;
+}
+
+/* Cube */
+.cube {
+    position: absolute;
+
+    width: 2000px;
+    height: 2000px;
+
+    top: 50%;
+    left: 50%;
+
+    transform-style: preserve-3d;
+
+    animation: rotatePanorama 120s linear infinite;
+}
+
+/* Cube Faces */
+.face {
+    position: absolute;
+
+    width: 2000px;
+    height: 2000px;
+
+    background-size: cover;
+    background-position: center;
+}
+
+/* Top */
+.top {
+    background-image: url("Panorama/Panorama0.png");
+    transform: rotateX(90deg) translateZ(1000px);
+}
+
+/* Bottom */
+.bottom {
+    background-image: url("Panorama/Panorama1.png");
+    transform: rotateX(-90deg) translateZ(1000px);
+}
+
+/* Front */
+.front {
+    background-image: url("Panorama/Panorama2.png");
+    transform: translateZ(1000px);
+}
+
+/* Right */
+.right {
+    background-image: url("Panorama/Panorama3.png");
+    transform: rotateY(90deg) translateZ(1000px);
+}
+
+/* Back */
+.back {
+    background-image: url("Panorama/Panorama4.png");
+    transform: rotateY(180deg) translateZ(1000px);
+}
+
+/* Left */
+.left {
+    background-image: url("Panorama/Panorama5.png");
+    transform: rotateY(-90deg) translateZ(1000px);
+}
+
+/* Minecraft-like rotation */
+@keyframes rotatePanorama {
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotateX(-12deg)
+            rotateY(0deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotateX(-12deg)
+            rotateY(360deg);
+    }
+}
+
+/* Dark Overlay */
+.overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    z-index: -1;
+}
+
+/* Main Minecraft Panel */
 .container {
     position: relative;
+    z-index: 10;
 
     width: 400px;
     height: 400px;
@@ -52,6 +152,7 @@ h1 {
     margin: 0;
 }
 
+/* Input */
 input {
     width: 70%;
     padding: 8px;
@@ -70,6 +171,7 @@ input:focus {
     border-color: white;
 }
 
+/* Button */
 button {
     padding: 10px 20px;
     cursor: pointer;
@@ -85,7 +187,7 @@ button:hover {
     filter: brightness(1.1);
 }
 
-#wip,
+/* Work in Progress Text */
 .wip {
     position: absolute;
     bottom: 12px;
