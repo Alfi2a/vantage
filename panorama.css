@@ -1,0 +1,63 @@
+body {
+    background: rgb(255, 0, 0) !important;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* SCENE (camera container) */
+.scene {
+    position: fixed;
+    inset: 0;
+    perspective: 3000px;
+    overflow: hidden;
+}
+
+/* CUBE (camera is inside) */
+.cube {
+    position: absolute;
+    width: 3000px;
+    height: 3000px;
+
+    left: 50%;
+    top: 75%;
+
+    transform-style: preserve-3d;
+
+    transform: translate(-50%, -50%) rotateX(-10deg);
+
+    animation: spin 180s linear infinite;
+}
+
+/* ALL FACES */
+.face {
+    position: absolute;
+    width: 3000px;
+    height: 3000px;
+
+    /* FIT FIX (your requirement) */
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* IMPORTANT for skybox */
+    backface-visibility: hidden;
+    overflow: hidden;
+}
+
+/* SKYBOX FACES (camera INSIDE cube) */
+.front  { background-image: url("Panorama/Panorama3.png"); transform: rotateY(0deg)   translateZ(-1500px); }
+.right  { background-image: url("Panorama/Panorama4.png"); transform: rotateY(90deg)  translateZ(-1500px); }
+.back   { background-image: url("Panorama/Panorama5.png"); transform: rotateY(180deg) translateZ(-1500px); }
+.left   { background-image: url("Panorama/Panorama2.png"); transform: rotateY(-90deg) translateZ(-1500px); }
+.top    { background-image: url("Panorama/Panorama0.png"); transform: rotateX(-90deg)  translateZ(-1500px); }
+.bottom { background-image: url("Panorama/Panorama1.png"); transform: rotateX(90deg) translateZ(-1500px); }
+
+/* SPIN ANIMATION */
+@keyframes spin {
+    from {
+        transform: translate(-50%, -50%) rotateX(-10deg) rotateY(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotateX(-10deg) rotateY(360deg);
+    }
+}
