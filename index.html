@@ -4,31 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vantage</title>
+
+    <link rel="stylesheet" href="panorama.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-    <!-- Panorama Background -->
-    <div class="panorama"></div>
+    <!-- SKYBOX -->
+    <div class="scene">
+        <div class="cube">
+            <div class="face front"></div>
+            <div class="face right"></div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+        </div>
+    </div>
+
+    <!-- vignette -->
     <div class="overlay"></div>
 
-    <!-- Center UI -->
+    <!-- UI -->
     <div class="container">
+
         <h1>Novara/Initara</h1>
 
         <p class="hint">Error.404: {Hint Missing}</p>
 
         <input type="text" id="answer" placeholder="Enter password...">
 
-        <button onclick="checkAnswer('⛄︎', 'nil.html')">
+        <button id="submitBtn">
             Submit
         </button>
 
         <p id="message"></p>
 
         <p class="wip">⚠ Work in Progress ⚠</p>
+
     </div>
 
     <script src="code.js"></script>
+
 </body>
 </html>
