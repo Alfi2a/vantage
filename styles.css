@@ -4,8 +4,9 @@
 }
 
 /* =========================
-   GLOBAL RESET
+   GLOBAL RESET + UI BASE
 ========================= */
+
 html,
 body {
     margin: 0;
@@ -18,65 +19,36 @@ body {
     color: white;
 }
 
+/* Center UI */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background: black;
+    background: transparent; /* IMPORTANT: panorama handles background */
 }
 
 /* =========================
-   MINECRAFT PANORAMA
+   OVERLAY (vignette)
 ========================= */
-.panorama {
-    position: fixed;
-    inset: 0;
 
-    width: 100vw;
-    height: 100vh;
-
-    background-image: url("Panorama/Panorama2.png");
-    background-repeat: no-repeat;
-
-    /* Larger than screen so movement has room */
-    background-size: 160% auto;
-    background-position: 0% 50%;
-
-    animation: panoramaMove 40s linear infinite alternate;
-
-    z-index: -2;
-
-    filter: blur(0.8px);
-}
-
-/* Dark vignette like Minecraft */
 .overlay {
     position: fixed;
     inset: 0;
 
     background: radial-gradient(
         circle at center,
-        rgba(0,0,0,0.1),
+        rgba(0,0,0,0.05),
         rgba(0,0,0,0.75)
     );
 
     z-index: -1;
 }
 
-/* Panorama movement */
-@keyframes panoramaMove {
-    from {
-        background-position: 0% 50%;
-    }
-    to {
-        background-position: 100% 50%;
-    }
-}
-
 /* =========================
-   UI CONTAINER
+   MENU UI
 ========================= */
+
 .container {
     position: relative;
     z-index: 10;
@@ -109,9 +81,6 @@ h1,
     margin: 0;
 }
 
-/* =========================
-   INPUT
-========================= */
 input {
     width: 70%;
     padding: 8px;
@@ -130,9 +99,6 @@ input:focus {
     border-color: white;
 }
 
-/* =========================
-   BUTTON
-========================= */
 button {
     padding: 10px 20px;
     cursor: pointer;
@@ -148,9 +114,6 @@ button:hover {
     filter: brightness(1.1);
 }
 
-/* =========================
-   WIP TEXT
-========================= */
 .wip {
     position: absolute;
     bottom: 12px;
@@ -160,6 +123,4 @@ button:hover {
 
     font-size: 12px;
     color: #aaa;
-
-    opacity: 0.8;
 }
