@@ -40,10 +40,14 @@ async function validateRegion() {
         const expectedCountry = countryMap[region];
 
         if (userCountry !== expectedCountry) {
-            document.querySelector(".container").innerHTML = `
-                <h1>Novara/Initara</h1>
-                <p>I think you are wrong here :)</p>
-            `;
+            catch (err) {
+                console.error("Location check failed:", err);
+
+                document.querySelector(".container").innerHTML = `
+                    <h1>???</h1>
+                    <p>I think you are wrong here :)</p>
+                `;
+            }
         }
     } catch (err) {
         console.error("Location check failed:", err);
