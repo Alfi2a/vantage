@@ -54,7 +54,7 @@ async function validateRegion() {
 
         // Optional: deny access if location lookup fails
         document.querySelector(".container").innerHTML = `
-            <h1>Novara/Initara</h1>
+            <h1>???</h1>
             <p>I think you are wrong here :)</p>
         `;
     }
