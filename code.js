@@ -40,18 +40,38 @@ async function validateRegion() {
         const expectedCountry = countryMap[region];
 
         if (userCountry !== expectedCountry) {
-            document.querySelector(".container").innerHTML = `
+            document.body.innerHTML = `
+                <div style="
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:center;
+                    align-items:center;
+                    height:100vh;
+                    font-family:sans-serif;
+                    text-align:center;
+                ">
                 <h1>???</h1>
                 <p>I think you are wrong here :)</p>
+            </div>
             `;
         }
     } catch (err) {
         console.error("Location check failed:", err);
 
         // Optional: deny access if location lookup fails
-        document.querySelector(".container").innerHTML = `
-            <h1>???</h1>
-            <p>I think you are wrong here :)</p>
+        document.body.innerHTML = `
+                <div style="
+                    display:flex;
+                    flex-direction:column;
+                    justify-content:center;
+                    align-items:center;
+                    height:100vh;
+                    font-family:sans-serif;
+                    text-align:center;
+                ">
+                <h1>???</h1>
+                <p>I think you are wrong here :)</p>
+            </div>            
         `;
     }
 }
