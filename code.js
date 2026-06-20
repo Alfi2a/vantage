@@ -13,6 +13,14 @@ document.getElementById("submitBtn").addEventListener("click", () => {
     checkAnswer("⛄︎", "nil.html");
 });
 
+function atbash(str) {
+    return str.replace(/[a-z]/gi, (char) => {
+        const base = char <= 'Z' ? 65 : 97;
+        const code = char.charCodeAt(0) - base;
+        return String.fromCharCode(base + (25 - code));
+    });
+}
+
 // URL examples:
 // ?id=KSA
 // ?id=UK
@@ -20,6 +28,11 @@ document.getElementById("submitBtn").addEventListener("click", () => {
 
 const params = new URLSearchParams(window.location.search);
 const region = params.get("id");
+
+if (region) {
+    const encoded = atbash(region);
+    console.log("Encoded region:", encoded);
+}
 
 const countryMap = {
     KSA: "SA", // Saudi Arabia
