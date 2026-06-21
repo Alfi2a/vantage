@@ -15,11 +15,33 @@ document.getElementById("submitBtn").addEventListener("click", () => {
 
 function atbash(str) {
     return str.replace(/[a-z]/gi, (char) => {
-        const base = char <= 'Z' ? 65 : 97;
-        const code = char.charCodeAt(0) - base;
-        return String.fromCharCode(base + (25 - code));
+        const isUpper = char === char.toUpperCase();
+        const code = char.toLowerCase().charCodeAt(0) - 97;
+        const encoded = String.fromCharCode(97 + (25 - code));
+        return isUpper ? encoded.toUpperCase() : encoded;
     });
 }
+
+async function showEncodedCountry() {
+    try {
+        const response = await fetch("https://ipapi.co/json/");
+        const data = await response.json();
+
+        const country = data.country_name; // e.g. "Germany"
+        const encoded = atbash(country);
+
+        document.body.insertAdjacentHTML(
+            "beforeend",
+            `<p>Country: ${encoded}</p>`
+        );
+
+        console.log(country, "->", encoded);
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+showEncodedCountry();
 
 // URL examples:
 // ?id=KSA
