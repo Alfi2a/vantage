@@ -32,10 +32,10 @@ async function showEncodedCountry() {
 
         document.body.insertAdjacentHTML(
             "beforeend",
-            `<p>Country: ${encoded}</p>`
+            `<p>C: ${encoded}</p>`
         );
 
-        console.log(country, "->", encoded);
+        console.log("C:", encoded);
     } catch (err) {
         console.error(err);
     }
@@ -53,7 +53,7 @@ const region = params.get("id");
 
 if (region) {
     const encoded = atbash(region);
-    console.log("Encoded region:", encoded);
+    console.log("ER:", encoded);
 }
 
 const countryMap = {
