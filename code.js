@@ -91,7 +91,7 @@ async function validateRegion() {
                     font-family:sans-serif;
                     text-align:center;
                 ">
-                    <h1>???</h1>
+                    <h1>C: ${encodedCountry}</h1>
                     <p>I think you are wrong here :)</p>
                 </div>
             `;
@@ -109,7 +109,7 @@ async function validateRegion() {
                 font-family:sans-serif;
                 text-align:center;
             ">
-                <h1>???</h1>
+                <h1>C: ${encodedCountry}</h1>
                 <p>I think you are wrong here :)</p>
             </div>
         `;
