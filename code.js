@@ -56,7 +56,7 @@ async function validateRegion() {
         const response = await fetch("https://ipapi.co/json/");
         const data = await response.json();
 
-        console.log("API response:", data);
+        console.log("API:", data);
 
         // Show encoded country
         const country = data.country_name;
