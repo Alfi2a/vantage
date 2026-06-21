@@ -51,7 +51,7 @@ const countryMap = {
 
 async function validateRegion() {
     try {
-        console.log("Fetching country data...");
+        console.log("...");
 
         const response = await fetch("https://ipapi.co/json/");
         const data = await response.json();
@@ -77,8 +77,8 @@ async function validateRegion() {
         const userCountry = data.country_code;
         const expectedCountry = countryMap[region];
 
-        console.log("User:", userCountry);
-        console.log("Expected:", expectedCountry);
+        console.log("U:", userCountry);
+        console.log("Ex:", expectedCountry);
 
         if (userCountry !== expectedCountry) {
             document.body.innerHTML = `
